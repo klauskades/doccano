@@ -70,7 +70,12 @@ export class ExampleItem {
   get url() {
     const l = this.fileUrl.indexOf('media/')
     const r = this.fileUrl.indexOf('media/', l + 1)
-    return this.fileUrl.slice(0, l) + this.fileUrl.slice(r)
+    // not an ideal solution yet!
+    if (process.env.apiUrl !== 'http://127.0.0.1:8000') {
+      return this.fileUrl.slice(0, l-1) + process.env.subUrl + this.fileUrl.slice(r-1)
+    } else {
+      return this.fileUrl.slice(0, l) + this.fileUrl.slice(r)
+    }
   }
 
   get filename() {
