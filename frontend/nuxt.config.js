@@ -31,8 +31,14 @@ export default {
     host: '0.0.0.0' // default: localhost
   },
 
+  router: {
+    base: process.env.SUB_URL || '/'
+  },
+
   env: {
-    baseUrl: '/v1'
+    baseUrl: (process.env.SUB_URL || '') + '/v1/',
+    subUrl: process.env.SUB_URL || '/',
+    apiUrl: process.env.API_URL || 'http://127.0.0.1:8000'
   },
 
   /*
@@ -83,9 +89,10 @@ export default {
 
   proxy: {
     // Use a fake value for use at build-time
-    '/v1/': {
-      target: process.env.API_URL || 'http://127.0.0.1:8000'
-    }
+    [(process.env.SUB_URL || '') + '/v1/']: {
+      target: process.env.API_URL || 'http://127.0.0.1:8000', pathRewrite: {[process.env.SUB_URL || '']: ''}
+    },
+    // fn: () => alert("Hey, I am inside the object"),
   },
   /*
   ** vuetify module configuration

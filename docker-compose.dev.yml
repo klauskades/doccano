@@ -58,6 +58,7 @@ services:
     working_dir: /src/frontend
     environment:
       API_URL: "http://backend:8000"
+      SUB_URL: ""
     volumes:
       - .:/src
       - node_modules:/src/frontend/node_modules
