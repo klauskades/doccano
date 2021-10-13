@@ -37,7 +37,13 @@
           />
         </v-card-title>
         <v-divider />
+        <v-card-text v-if="example.text.startsWith('study-id-')" class="title highlight">
+          <div  style="height: 70vh; overflow: hidden">
+            <iframe ref="iframe" class="ohif-frame" frameBorder="0" width="100%" height="100%" :src="study_url"></iframe>
+          </div>
+        </v-card-text>
         <v-card-text
+          v-else
           class="title highlight"
           style="white-space: pre-wrap;"
           v-text="example.text"
@@ -75,6 +81,12 @@ export default {
     ListMetadata,
     ToolbarLaptop,
     ToolbarMobile
+  },
+
+  computed: {
+    study_url() {
+      return "/ohif/viewer/"+ this.example.text.substr(9);
+    }
   },
 
   setup() {
@@ -137,3 +149,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .ohif-frame{
+    position: relative;
+    top: -40px;
+  }
+</style>

@@ -18,7 +18,12 @@
     </template>
     <template v-slot:content>
       <v-card class="mb-5">
-        <v-card-text class="title text-pre-wrap" v-text="doc.text" />
+        <v-card-text v-if="doc.text.startsWith('study-id-')" class="title">
+          <div  style="height: 70vh; overflow: hidden">
+            <iframe ref="iframe" class="ohif-frame" frameBorder="0" width="100%" height="100%" :src="study_url"></iframe>
+          </div>
+        </v-card-text>
+        <v-card-text v-else class="title text-pre-wrap" v-text="doc.text" />
       </v-card>
       <seq2seq-box
         :text="doc.text"
@@ -86,6 +91,9 @@ export default {
       } else {
         return this.docs.items[0]
       }
+    },
+    study_url() {
+      return "/ohif/viewer/"+ this.doc.text.substr(9);
     }
   },
 
@@ -150,5 +158,9 @@ export default {
 <style scoped>
 .text-pre-wrap {
   white-space: pre-wrap !important;
+}
+.ohif-frame{
+  position: relative;
+  top: -40px;
 }
 </style>

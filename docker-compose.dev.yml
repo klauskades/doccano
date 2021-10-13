@@ -58,7 +58,7 @@ services:
     working_dir: /src/frontend
     environment:
       API_URL: "http://backend:8000"
-      SUB_URL: ""
+      SUB_URL: "/doccano"
     volumes:
       - .:/src
       - node_modules:/src/frontend/node_modules
