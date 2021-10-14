@@ -4,6 +4,7 @@
       <action-menu
         @upload="upload"
         @download="dialogDownload=true"
+        @sendToKaapana="sendToKaapana"
       />
       <v-btn
         class="text-capitalize ms-2"
@@ -74,6 +75,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapActions, mapGetters } from 'vuex'
 import _ from 'lodash'
 import DocumentList from '@/components/example/DocumentList.vue'
 import FormDelete from '@/components/example/FormDelete.vue'
@@ -153,6 +155,8 @@ export default Vue.extend({
   },
 
   methods: {
+    ...mapActions('platform', ['triggerDag', 'getDagList']),
+
     async remove() {
       await this.$services.example.bulkDelete(this.projectId, this.selected)
       this.$fetch()
@@ -170,6 +174,11 @@ export default Vue.extend({
     },
     updateQuery(query: object) {
       this.$router.push(query)
+    },
+    sendToKaapana() {
+      console.log('sending to kaapana', this.projectId)
+      const payload = {dagId: 'parse-doccano-tokens', params: {'conf': {'project_id': this.projectId}}}
+      this.triggerDag(payload)
     },
     movePage(query: object) {
       this.updateQuery({

@@ -5,6 +5,7 @@
     @create="$emit('create')"
     @upload="$emit('upload')"
     @download="$emit('download')"
+    @sendToKaapana="$emit('sendToKaapana')"
   />
 </template>
 
@@ -29,7 +30,12 @@ export default Vue.extend({
             title: this.$t('dataset.exportDataset'),
             icon: 'mdi-download',
             event: 'download'
-          }
+          },
+          {
+            title: this.$t('dataset.sendDatasetToKaapana'),
+            icon: 'mdi-send',
+            event: 'sendToKaapana'
+          },
       ]
     }
   }

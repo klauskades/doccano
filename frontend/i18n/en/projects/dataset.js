@@ -2,6 +2,7 @@ export default {
   dataset: 'Dataset',
   actions: 'Actions',
   importDataset: 'Import Dataset',
+  sendDatasetToKaapana: 'Send data to Kaapana',
   exportDataset: 'Export Dataset',
   text: 'Text',
   metadata: 'Metadata',
