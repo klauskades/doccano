@@ -31,6 +31,20 @@ export default {
     host: '0.0.0.0' // default: localhost
   },
 
+  
+  // /////////////////////////////////////////////////////////////////////////
+  // /* Begin added Kaapana, the rest is copied! */
+  // router: {
+  //   base: '/doccano/',
+  //   mode: 'hash' // Set by Klaus to fix reload behaviour!
+  // },
+
+  // env: {
+  //   baseUrl: '/doccano/v1'
+  // },
+  // /* End added Kaapana */
+  // /////////////////////////////////////////////////////////////////////////
+
   router: {
     base: process.env.SUB_URL || '/'
   },
