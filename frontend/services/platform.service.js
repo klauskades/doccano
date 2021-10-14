@@ -7,14 +7,14 @@ class PlatformService {
   }
 
   // getDagList() {
-  //   let oauthUrl = '/flow/kaapna/api/getdags'
+  //   let oauthUrl = '/flow/kaapana/api/getdags'
   //   //let oauthUrl = '/jsons/dag_list.json'
   //   return  this.request.get(oauthUrl)
   // }
 
   triggerDag(dagId, payload) {
     return new Promise((resolve, reject) => {
-      const oauthUrl = '/flow/kaapna/api/trigger/' + dagId
+      const oauthUrl = '/flow/kaapana/api/trigger/' + dagId
       console.log(oauthUrl, payload)
       this.request.post(oauthUrl, payload).then((response) =>  {
         resolve(response.data)

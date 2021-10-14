@@ -177,7 +177,7 @@ export default Vue.extend({
     },
     sendToKaapana() {
       console.log('sending to kaapana', this.projectId)
-      const payload = {dagId: 'parse-doccano-tokens', params: {'conf': {'project_id': this.projectId}}}
+      const payload = {dagId: 'service-parse-doccano-tokens', params: {'conf': {'project_id': this.projectId}}}
       this.triggerDag(payload)
     },
     movePage(query: object) {
