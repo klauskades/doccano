@@ -19,25 +19,7 @@
             {{ $t('home.mainTitle') }}
           </h1>
           <div class="mt-4">
-            <v-btn
-              large
-              outlined
-              color="white"
-              href="https://github.com/doccano/doccano"
-            >
-              <v-icon left>
-                mdi-github
-              </v-icon>
-              GitHub
-            </v-btn>
-            <v-btn
-              class="blue lighten-2 ml-5"
-              dark
-              large
-              :href="localePath('/auth')"
-            >
-              {{ $t('home.getStarted') }}
-            </v-btn>
+            <p>Login credentials are defined in your deployment.</p>
           </div>
         </v-flex>
       </v-layout>
